@@ -1,39 +1,33 @@
-import pandas as pd
-from records.record import Record
-from typing import Mapping, Callable
-from service.algorithms import OnlyOneIsTrue
-from dataclasses import dataclass
+from sqlalchemy import Column
+from sqlalchemy import Float, Date, String, Time, ARRAY
+from sqlalchemy.orm import declarative_base
 
-# r = Record({"date": 33, "price": "a"})
-# df = pd.DataFrame(columns=["date", "price"])
-# print(r)
-# df = pd.concat([df, pd.DataFrame({"date": ["some_date"], "price": [33]})], ignore_index=True)
+Base = declarative_base()
 
-# print(r.dataframe)
-# print(df)
-# print(isinstance({}, Mapping))
+class Record(Base):
+    __tablename__ = "records"
+    date = Column(Date, nullable = False)
+    name = Column(String, nullable = False)
+    time = Column(Time, nullable = False)
+    tags = Column(ARRAY, nullable = False)
+    price = Column(Float, nullable = False)
 
 
-# def func(a = None, b = None, c = None, d = None):
-#     OnlyOneIsTrue(all(arg is not None for arg in [a, b, c]),
-#                   d is not None)
-#
-# @dataclass
-# class bestParams:
-#     distance_func: Callable
-#     kernel_func: Callable
-#     window_width: float = None
-#     neighbourhood_count: int = None
-#
-#
-# params = bestParams(func, func, window_width=3.0)
+class NotHandledCase(RuntimeError): pass
 
-# print(params)
+while True:
+    match input("enter your action. `help` for help."):
+        case "sum":
+            pass            
+        case "avg":
+            pass
+        case "min":
+            pass
+        case "max":
+            pass
+        case _:
+            pass
 
-my_typle = (3)
 
-print(my_typle)
-
-my_typle = (3,)
-
-print(my_typle)
+if __name__ == "__main__":
+    pass
